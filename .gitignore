@@ -50,3 +50,15 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.dep
+*.crf
+*.lst
+an549_bare-metal/project/mdk/Out/template.htm
+*.lnp
+*.axf
+*.iex
+an549_bare-metal/project/mdk/Objects/gcc_template.build_log.htm
+an549_bare-metal/project/mdk/Out/template.build_log.htm
+*.dbgconf
+*.gabriel
+*.scvd

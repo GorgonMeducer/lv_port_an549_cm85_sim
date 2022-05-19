@@ -44,7 +44,7 @@
 ;   <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
  *----------------------------------------------------------------------------*/
-#define __STACK_SIZE    0x00000600
+#define __STACK_SIZE    0x00002000
 
 #define __RAM1_RW_SIZE 	(__RAM1_SIZE - __STACK_SIZE - __HEAP_SIZE)
 //#define __RAM1_RW_SIZE 	(__RAM1_SIZE - __STACK_SIZE)
@@ -57,13 +57,15 @@ LR_ROM __ROM_BASE __ROM_SIZE  {                                                 
         * (+RO-CODE)
         ;   * (+XO)
     }
+}
 
-    ARM_LIB_STACK __RAM1_BASE ALIGN 8 EMPTY __STACK_SIZE {                      ; Reserve empty region for stack
-    }
-
+LR_RAM1 __RAM1_BASE{
     RW_RAM1 +0 __RAM1_RW_SIZE {
         * (+RO-DATA)
         * (+RW +ZI)
+    }
+
+    ARM_LIB_STACK +0 ALIGN 8 EMPTY __STACK_SIZE {                      ; Reserve empty region for stack
     }
 
     RM_RAM_NOINIT +0 UNINIT {

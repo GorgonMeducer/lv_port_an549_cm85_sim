@@ -130,8 +130,11 @@ typedef struct
 /* ================             Peripheral declaration             ================ */
 /* ================================================================================ */
 
+#if defined(__USE_AN547__)
+#define CMSDK_UART0_BASE_ADDRESS	(0x49303000ul)
+#else
 #define CMSDK_UART0_BASE_ADDRESS	(0x41303000ul)
-//#define CMSDK_UART0_BASE_ADDRESS	(0x40004000ul)
+#endif
 #define CMSDK_UART0             ((CMSDK_UART_TypeDef              *) CMSDK_UART0_BASE_ADDRESS)
 
 
@@ -183,12 +186,6 @@ int stderr_putchar(char txchar)
 void ttywrch (int ch)
 {
     stdout_putchar((char)ch);
-}
-
-/* Redirects armclang printf to UART */
-int fputc(int ch, FILE *f)
-{
-    return stdout_putchar(ch);
 }
 
 #if 0

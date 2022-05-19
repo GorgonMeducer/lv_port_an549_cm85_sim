@@ -116,9 +116,13 @@ typedef struct /* see Document ? */
 
 
 
-
+#if defined(__USE_AN547__)
+#define IOTKIT_FPGAIO_BASE                      (0x49302000)      /* FPGA - IO ( Sytem Ctrl + I/O) */
+#define IOTKIT_I2C0_BASE                        (0x49200000)        /* FPGA - SBCon I2C (Touch) */
+#else
 #define IOTKIT_FPGAIO_BASE                      (0x41302000UL)      /* FPGA - IO ( Sytem Ctrl + I/O) */
 #define IOTKIT_I2C0_BASE                        (0x41200000UL)        /* FPGA - SBCon I2C (Touch) */
+#endif
 
 #define IOTKIT_FPGAIO   ((IOTKIT_FPGAIO_TypeDef           *) IOTKIT_FPGAIO_BASE) 
 #define IOTKIT_I2C0     ((IOTKIT_I2C_TypeDef              *) IOTKIT_I2C0_BASE)  

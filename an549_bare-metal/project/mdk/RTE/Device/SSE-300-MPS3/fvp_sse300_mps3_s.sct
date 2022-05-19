@@ -22,7 +22,7 @@
 LR_CODE S_CODE_START {
     ER_CODE S_CODE_START {
         *.o (RESET +First)
-        .ANY (+RO)
+        .ANY (+RO-CODE)
     }
 
     /*
@@ -53,17 +53,26 @@ LR_CODE S_CODE_START {
      * size of the SRAM available.
      */
     ScatterAssert(ImageLimit(CODE_WATERMARK) <= S_CODE_START + S_CODE_SIZE)
+}
 
-    ER_DATA S_DATA_START {
+LR_DATA S_DATA_START {
+    ER_DATA +0 {
+        .ANY (+RO-DATA)
         .ANY (+ZI +RW)
     }
+    
+    RW_IRAM_UNINIT +0 UNINIT {
+        *(.uninitialized_data*)
+        *(.bss.noinit)
+    }
+
 
     #if HEAP_SIZE > 0
     ARM_LIB_HEAP +0 ALIGN 8 EMPTY  HEAP_SIZE  {   ; Reserve empty region for heap
     }
     #endif
 
-    ARM_LIB_STACK +0 ALIGN 32 EMPTY STACK_SIZE {   ; Reserve empty region for stack
+    ARM_LIB_STACK +0 ALIGN 32 FILL 0xDEADBEEF STACK_SIZE {   ; Reserve empty region for stack
     }
 
     /* This empty, zero long execution region is here to mark the limit address
@@ -75,4 +84,8 @@ LR_CODE S_CODE_START {
      * size of the SRAM available.
      */
     ScatterAssert(ImageLimit(SRAM_WATERMARK) <= S_DATA_START + S_DATA_SIZE)
+    
+    PERIPHERAL_UART0 0x49303000 UNINIT {
+        *(:gdef:UART0)
+    }
 }

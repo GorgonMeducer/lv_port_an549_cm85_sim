@@ -62,3 +62,4 @@ an549_bare-metal/project/mdk/Out/template.build_log.htm
 *.dbgconf
 *.gabriel
 *.scvd
+*.__i

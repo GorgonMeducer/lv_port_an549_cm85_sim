@@ -87,9 +87,9 @@ void SystemInit (void)
   SCB->CCR |= SCB_CCR_UNALIGN_TRP_Msk;
 #endif
 
-// Enable Loop and branch info cache
-SCB->CCR |= SCB_CCR_LOB_Msk;
-__ISB();
+    // Enable Loop and branch info cache
+    SCB->CCR |= SCB_CCR_LOB_Msk | (1<<18);
+    __ISB();
 
 #if defined (__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE == 3U)
   TZ_SAU_Setup();

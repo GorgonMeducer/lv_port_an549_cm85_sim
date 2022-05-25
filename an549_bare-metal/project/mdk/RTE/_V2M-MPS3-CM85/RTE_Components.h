@@ -14,7 +14,7 @@
 /*
  * Define the Device Header File: 
  */
-#define CMSIS_device_header "ARMCM55.h"
+#define CMSIS_device_header "ARMCM85.h"
 
 /* Arm::Acceleration:Arm-2D:Alpha-Blending:1.0.0-preview */
 #define __RTE_ACCELERATION_ARM_2D_ALPHA_BLENDING__

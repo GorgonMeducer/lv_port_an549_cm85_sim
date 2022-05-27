@@ -453,6 +453,41 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>ui demo</GroupName>
+          <Files>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_events.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_events.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_Number.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_font_Number.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Acceleration</GroupName>
         </Group>
         <Group>
@@ -1060,6 +1095,41 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>ui demo</GroupName>
+          <Files>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_events.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_events.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_Number.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_font_Number.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Acceleration</GroupName>
         </Group>
         <Group>
@@ -1485,7 +1555,7 @@
               <MiscControls>-Omax</MiscControls>
               <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\common\platform;..\..\;..\..\..\common\platform\lib;..\..\..\common\platform\mps3\v2m_mps3;..\..\..\common\platform\mps3</IncludePath>
+              <IncludePath>..\..\..\common\platform;..\..\;..\..\..\common\platform\lib;..\..\..\common\platform\mps3\v2m_mps3;..\..\..\common\platform\mps3;..\..\..\ui</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1594,6 +1664,41 @@
               <FileName>Touch_V2M-MPS3.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\common\platform\mps3\Touch_V2M-MPS3.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ui demo</GroupName>
+          <Files>
+            <File>
+              <FileName>ui.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui.h</FilePath>
+            </File>
+            <File>
+              <FileName>ui_events.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_events.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_font_Number.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_font_Number.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.c</FilePath>
+            </File>
+            <File>
+              <FileName>ui_helpers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\ui\ui_helpers.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1877,14 +1982,6 @@
       </component>
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="EVR" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M with EVR">
         <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2"/>
-        <targetInfos>
-          <targetInfo name="AN547-Cortex-M55_r0"/>
-          <targetInfo name="V2M-MPS3-CM55"/>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Demo:Widgets" Cvendor="LVGL" Cversion="8.3.0-dev" condition="LVGL-Essential">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="1.0.4-alpha5"/>
         <targetInfos>
           <targetInfo name="AN547-Cortex-M55_r0"/>
           <targetInfo name="V2M-MPS3-CM55"/>

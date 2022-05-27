@@ -27,6 +27,7 @@
 #include <stdarg.h>
 
 #include "demos/lv_demos.h"
+#include "ui.h"
 
 #include "lv_port_disp_template.h"
 #include "lv_port_indev_template.h"
@@ -86,14 +87,12 @@ int main(void)
     lv_demo_benchmark();
     
     //lv_demo_benchmark_run_scene(43);      // run scene no 31
-#endif
     
-#if LV_USE_DEMO_WIDGETS
+#elif LV_USE_DEMO_WIDGETS
     lv_demo_widgets();
+#else
+    ui_init();
 #endif
-    
-    //test();
-    
     
     while(1) {
         lv_timer_handler_run_in_period(1);

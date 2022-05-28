@@ -16,8 +16,6 @@
  */
 #define CMSIS_device_header "SSE300MPS3.h"
 
-/* Arm::Acceleration:Arm-2D Helper:PFB:1.0.0-preview */
-#define __RTE_ACCELERATION_ARM_2D_HELPER_PFB__
 /* Arm::Acceleration:Arm-2D:Alpha-Blending:1.0.0-preview */
 #define __RTE_ACCELERATION_ARM_2D_ALPHA_BLENDING__
 /* Arm::Acceleration:Arm-2D:Core:1.0.0-preview */
@@ -32,9 +30,6 @@
 /* Keil.ARM Compiler::Compiler:I/O:STDOUT:EVR:1.2.0 */
 #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
           #define RTE_Compiler_IO_STDOUT_EVR      /* Compiler I/O: STDOUT EVR */
-/* LVGL.LVGL::LVGL:lvgl:Demo:Widgets:8.3.0-dev */
-/*! \brief enable demo:widgets support */
-#define LV_USE_DEMO_WIDGETS         1
 /* LVGL.LVGL::LVGL:lvgl:Essential:8.3.0-dev */
 /*! \brief Enable LVGL */
 #define RTE_GRAPHICS_LVGL

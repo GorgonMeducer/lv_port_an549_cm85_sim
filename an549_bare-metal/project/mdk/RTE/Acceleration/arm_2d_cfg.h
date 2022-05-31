@@ -62,7 +62,7 @@ extern "C" {
 // =======================
 // 
 // <c1> Do NOT treat alpha value 255 as completely opaque in mask related operations
-// <i> When define this macro, alpha value 0xFF will not be treated as opaque in mask related operations and you can barely see the background. Defining this macro improves performance. Althought this is marked as UNSAFE, we highly recommend users to define this macro by default.
+// <i> When define this macro, alpha value 0xFF will not be treated as opaque in mask related operations and you can barely see the background. Defining this macro improves performance.
 //#define __ARM_2D_CFG_UNSAFE_IGNORE_ALPHA_255_COMPENSATION__  
 // </c>
 

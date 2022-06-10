@@ -86,7 +86,7 @@ int main(void)
     lv_demo_benchmark_set_finished_cb(&on_benchmark_finished);
     lv_demo_benchmark();
     
-    //lv_demo_benchmark_run_scene(43);      // run scene no 31
+    //lv_demo_benchmark_run_scene(43);      // run specified scence
     
 #elif LV_USE_DEMO_WIDGETS
     lv_demo_widgets();
@@ -95,7 +95,8 @@ int main(void)
 #endif
     
     while(1) {
-        lv_timer_handler_run_in_period(1);
+        //lv_timer_handler_run_in_period(1);
+        lv_timer_handler();
     }
     
 }

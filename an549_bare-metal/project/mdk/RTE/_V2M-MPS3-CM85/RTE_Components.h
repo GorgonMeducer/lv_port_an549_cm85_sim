@@ -42,6 +42,9 @@
 /* LVGL.LVGL::LVGL:lvgl:GPU Arm-2D:1.0.3 */
 /*! \brief enable Arm-2D support*/
 #define LV_USE_GPU_ARM2D 1
+/* LVGL.LVGL::LVGL:lvgl:Pinyin:8.3.0-dev */
+/*! \brief enable ffmpeg support */
+#define LV_USE_IME_PINYIN         1
 
 
 #endif /* RTE_COMPONENTS_H */

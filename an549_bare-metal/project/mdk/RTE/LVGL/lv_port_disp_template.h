@@ -3,7 +3,8 @@
  *
  */
 
- /*Copy this file as "lv_port_disp.h" and set this value to "1" to enable content*/
+/*Copy this file as "lv_port_disp.h" and set this value to "1" to enable content*/
+#if 1
 
 #ifndef LV_PORT_DISP_TEMPL_H
 #define LV_PORT_DISP_TEMPL_H
@@ -15,15 +16,11 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
-#include "app_cfg.h"
-#include "GLCD_Config.h"
 #include "lvgl.h"
 
 /*********************
  *      DEFINES
  *********************/
-
-
 
 /**********************
  *      TYPEDEFS
@@ -32,10 +29,16 @@ extern "C" {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
-extern void lv_port_disp_init(void);
+/* Initialize low level display driver */
+void lv_port_disp_init(void);
 
-extern void disp_enable(void);
-extern void disp_disable(void);
+/* Enable updating the screen (the flushing process) when disp_flush() is called by LVGL
+ */
+void disp_enable_update(void);
+
+/* Disable updating the screen (the flushing process) when disp_flush() is called by LVGL
+ */
+void disp_disable_update(void);
 
 /**********************
  *      MACROS
@@ -47,3 +50,4 @@ extern void disp_disable(void);
 
 #endif /*LV_PORT_DISP_TEMPL_H*/
 
+#endif /*Disable/Enable content*/

@@ -1553,7 +1553,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-Omax</MiscControls>
-              <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0,LV_DEF_REFR_PERIOD=2</Define>
+              <Define>LCD_MIRROR_X=1,GLCD_MIRROR_Y=0</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\..\common\platform;..\..\;..\..\..\common\platform\lib;..\..\..\common\platform\mps3\v2m_mps3;..\..\..\common\platform\mps3;..\..\..\ui</IncludePath>
             </VariousControls>

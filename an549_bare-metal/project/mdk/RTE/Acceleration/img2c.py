@@ -172,6 +172,55 @@ const arm_2d_tile_t c_tile{0}Mask = {{
 }};
 """
 
+tail2BitAlpha="""
+
+
+extern const arm_2d_tile_t c_tile{0}A2Mask;
+
+__attribute__((section(\"arm2d.tile.c_tile{0}A2Mask\")))
+const arm_2d_tile_t c_tile{0}A2Mask = {{
+    .tRegion = {{
+        .tSize = {{
+            .iWidth = {1},
+            .iHeight = {2},
+        }},
+    }},
+    .tInfo = {{
+        .bIsRoot = true,
+        .bHasEnforcedColour = true,
+        .tColourInfo = {{
+            .chScheme = ARM_2D_COLOUR_MASK_A2,
+        }},
+    }},
+    .pchBuffer = (uint8_t *)c_bmp{0}A2Alpha,
+}};
+"""
+
+tail4BitAlpha="""
+
+
+extern const arm_2d_tile_t c_tile{0}A4Mask;
+
+__attribute__((section(\"arm2d.tile.c_tile{0}A4Mask\")))
+const arm_2d_tile_t c_tile{0}A4Mask = {{
+    .tRegion = {{
+        .tSize = {{
+            .iWidth = {1},
+            .iHeight = {2},
+        }},
+    }},
+    .tInfo = {{
+        .bIsRoot = true,
+        .bHasEnforcedColour = true,
+        .tColourInfo = {{
+            .chScheme = ARM_2D_COLOUR_MASK_A4,
+        }},
+    }},
+    .pchBuffer = (uint8_t *)c_bmp{0}A4Alpha,
+}};
+"""
+
+
 tailAlpha2="""
 
 
@@ -218,6 +267,8 @@ def main(argv):
     parser.add_argument('--format', nargs='?',type = str, default="all", help="RGB Format (rgb565, rgb32, gray8, all)")
     parser.add_argument('--dim', nargs=2,type = int, help="Resize the image with the given width and height")
     parser.add_argument('--rot', nargs='?',type = float, default=0.0, help="Rotate the image with the given angle in degrees")
+    parser.add_argument('--a2', action='store_true', help="Generate 2bit alpha-mask")
+    parser.add_argument('--a4', action='store_true', help="Generate 4bit alpha-mask")
 
     args = parser.parse_args()
 
@@ -294,6 +345,76 @@ def main(argv):
                         print("0x%02x," %(alpha) ,file=o)
                     else:
                         print("0x%02x" %(alpha), end =", ",file=o)
+                    lineWidth+=1
+                cnt+=1
+                print('',file=o)
+            print('};', file=o)
+
+            # 2-bit Alpha channel
+            if args.a2 or args.format == 'all':
+
+                def RevBitPairPerByte(byteArr):
+                    return ((byteArr & 0x03) << 6) |  ((byteArr & 0xc0) >> 6) | ((byteArr & 0x30) >> 2 ) | ((byteArr & 0x0c) << 2)
+
+
+                print('__attribute__((aligned(4), section(\"arm2d.asset.c_bmp%sA2Alpha\")))' % (arr_name), file=o)
+                print('static const uint8_t c_bmp%sA2Alpha[%d*%d] = {' % (arr_name, (row+3)/4, col),file=o)
+                cnt = 0
+                alpha = data[...,3].astype(np.uint8)
+                for eachRow in alpha:
+                    lineWidth=0
+                    print("/* -%d- */" % (cnt), file=o)
+
+                    bitsArr = np.unpackbits(eachRow.astype(np.uint8))
+
+                    # generate indexes for MSB bit pair every byte
+                    idx = np.arange(0, np.size(bitsArr), 8)
+                    idx=np.reshape(np.column_stack((idx+0, idx+1)), (1,-1))
+
+                    # extraction + endianness conversion
+                    packedBytes = RevBitPairPerByte(np.packbits(bitsArr[idx]))
+
+                    for elt in packedBytes:
+                        if lineWidth % 16 == 15:
+                            print("0x%02x," %(elt) ,file=o)
+                        else:
+                            print("0x%02x" %(elt), end =", ",file=o)
+                        lineWidth+=1
+                    cnt+=1
+                    print('',file=o)
+                print('};', file=o)
+
+        # 4-bit Alpha channel
+        if args.a4 or args.format == 'all':
+
+            def RevBitQuadPerByte(byteArr):
+                return ((byteArr & 0x0f) << 4) |  ((byteArr & 0xf0) >> 4)
+
+
+            print('__attribute__((aligned(4), section(\"arm2d.asset.c_bmp%sA4Alpha\")))' % (arr_name), file=o)
+            print('static const uint8_t c_bmp%sA4Alpha[%d*%d] = {' % (arr_name, (row+1)/2, col),file=o)
+            cnt = 0
+            alpha = data[...,3].astype(np.uint8)
+            for eachRow in alpha:
+                lineWidth=0
+                print("/* -%d- */" % (cnt), file=o)
+
+                bitsArr = np.unpackbits(eachRow.astype(np.uint8))
+
+                # generate indexes for MSB bit quadruplet every byte
+                idx = np.arange(0, np.size(bitsArr), 8)
+                idx=np.reshape(np.column_stack(
+                        (np.column_stack((idx+0, idx+1)), np.column_stack((idx+2, idx+3)))),
+                        (1,-1)),
+
+                # extraction + endianness conversion
+                packedBytes = RevBitQuadPerByte(np.packbits(bitsArr[idx]))
+
+                for elt in packedBytes:
+                    if lineWidth % 16 == 15:
+                        print("0x%02x," %(elt) ,file=o)
+                    else:
+                        print("0x%02x" %(elt), end =", ",file=o)
                     lineWidth+=1
                 cnt+=1
                 print('',file=o)
@@ -393,17 +514,20 @@ def main(argv):
             buffStr='pwBuffer'
             typStr='uint32_t'
 
-
-
-
         # insert tail
         if args.format == 'gray8' or args.format == 'all':
+            buffStr='pchBuffer'
+            typStr='uint8_t'
             print(tailDataGRAY8.format(arr_name, str(row), str(col), "."+buffStr+" = ("+typStr+"*)"), file=o)
 
         if args.format == 'rgb565' or args.format == 'all':
+            buffStr='phwBuffer'
+            typStr='uint16_t'
             print(tailDataRGB565.format(arr_name, str(row), str(col), "."+buffStr+" = ("+typStr+"*)"), file=o)
 
         if args.format == 'rgb32' or args.format == 'all':
+            buffStr='pwBuffer'
+            typStr='uint32_t'
             if mode == "RGBA":
                 print(tailDataRGBA8888.format(arr_name, str(row), str(col), "."+buffStr+" = ("+typStr+"*)"), file=o)
                 print(tailAlpha2.format(arr_name, str(row), str(col)), file=o)
@@ -413,6 +537,12 @@ def main(argv):
 
         if mode == "RGBA":
             print(tailAlpha.format(arr_name, str(row), str(col)), file=o)
+
+            if args.a2 or args.format == 'all':
+                print(tail2BitAlpha.format(arr_name, str(row), str(col)), file=o)
+
+            if args.a4 or args.format == 'all':
+                print(tail4BitAlpha.format(arr_name, str(row), str(col)), file=o)
 
 
         print(tail.format(arr_name, str(row), str(col)), file=o)

@@ -56,13 +56,6 @@ static void test(void)
     lv_obj_center(label);                                           /*Align the label to the center*/
 }
 
-#if LV_USE_DEMO_BENCHMARK
-static void on_benchmark_finished(void)
-{
-    disp_enable_update();
-}
-#endif
-
 int main(void)
 {
     printf("Hello LVGL!!\r\n");
@@ -80,11 +73,8 @@ int main(void)
     __LL_LCD_PRINT(24, 0, "Running LVGL Benchmark...");
     __LL_LCD_PRINT(25, 0, "Please stand by...");
     __LL_LCD_PRINT(28, 0, "NOTE: You will NOT see anything until the end.");
-
-    disp_disable_update();
     
-    lv_demo_benchmark_set_finished_cb(&on_benchmark_finished);
-    lv_demo_benchmark();
+    lv_demo_benchmark(LV_DEMO_BENCHMARK_MODE_RENDER_ONLY);
     
     //lv_demo_benchmark_run_scene(85);      // run specified scence
     

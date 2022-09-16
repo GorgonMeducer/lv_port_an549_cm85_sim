@@ -16,23 +16,24 @@
  */
 #define CMSIS_device_header "ARMCM85.h"
 
-/* ARM::Acceleration:Arm-2D:Alpha-Blending:1.0.0-preview */
+/* ARM::Acceleration:Arm-2D:Alpha-Blending:1.1.0-preview */
 #define __RTE_ACCELERATION_ARM_2D_ALPHA_BLENDING__
-/* ARM::Acceleration:Arm-2D:Core:1.0.0-preview */
+/* ARM::Acceleration:Arm-2D:Core:1.1.0-preview */
 #define __RTE_ACCELERATION_ARM_2D__
-/* ARM::Acceleration:Arm-2D:Transform:1.0.0-preview */
+/* ARM::Acceleration:Arm-2D:Transform:1.1.0-preview */
 #define __RTE_ACCELERATION_ARM_2D_TRANSFORM__
-/* GorgonMeducer.Performance Counter::Utilities:perf_counter:Core:Library:1.9.6 */
+/* GorgonMeducer.Performance Counter::Utilities:perf_counter:Core:Library:1.9.9-dev */
 #define __PERF_COUNTER__
+#define __PERF_COUNTER_CFG_USE_SYSTICK_WRAPPER__
 /* Keil.ARM Compiler::Compiler:Event Recorder:DAP:1.5.1 */
 #define RTE_Compiler_EventRecorder
           #define RTE_Compiler_EventRecorder_DAP
 /* Keil.ARM Compiler::Compiler:I/O:STDOUT:EVR:1.2.0 */
 #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
           #define RTE_Compiler_IO_STDOUT_EVR      /* Compiler I/O: STDOUT EVR */
-/* LVGL.LVGL::LVGL:lvgl:Demo:Widgets:9.0.0-dev */
-/*! \brief enable demo:widgets support */
-#define LV_USE_DEMO_WIDGETS         1
+/* LVGL.LVGL::LVGL:lvgl:Benchmark:9.0.0-dev */
+/*! \brief enable demo:bencharmk */
+#define LV_USE_DEMO_BENCHMARK         1
 /* LVGL.LVGL::LVGL:lvgl:Essential:9.0.0-dev */
 /*! \brief Enable LVGL */
 #define RTE_GRAPHICS_LVGL
@@ -43,7 +44,7 @@
 /*! \brief enable Arm-2D support*/
 #define LV_USE_GPU_ARM2D 1
 /* LVGL.LVGL::LVGL:lvgl:Pinyin:9.0.0-dev */
-/*! \brief enable ffmpeg support */
+/*! \brief enable pinying support */
 #define LV_USE_IME_PINYIN         1
 
 

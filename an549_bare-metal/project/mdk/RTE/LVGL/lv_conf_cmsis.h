@@ -185,6 +185,13 @@
     #define LV_GPU_SWM341_DMA2D_INCLUDE "SWM341.h"
 #endif
 
+/*Use GD32 IPA GPU
+ * This adds support for Image Processing Accelerator on GD32F450 and GD32F470 series MCUs
+ *
+ * NOTE: IPA on GD32F450 has a bug where the fill operation overwrites data beyond the
+ * framebuffer. This driver works around it by saving and restoring affected memory, but
+ * this makes it not thread-safe. GD32F470 is not affected. */
+
 /*=======================
  * FEATURE CONFIGURATION
  *=======================*/
@@ -642,7 +649,7 @@
 /*Benchmark your system*/
 #if LV_USE_DEMO_BENCHMARK
     /*Use RGB565A8 images with 16 bit color depth instead of ARGB8565*/
-    #define LV_DEMO_BENCHMARK_RGB565A8 0
+    #define LV_DEMO_BENCHMARK_RGB565A8 1
 #endif
 
 /*--END OF LV_CONF_H--*/

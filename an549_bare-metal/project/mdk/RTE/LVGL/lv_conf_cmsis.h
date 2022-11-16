@@ -53,8 +53,8 @@
 #endif  /*LV_USE_BUILTIN_SNPRINTF*/
 
 #define LV_STDLIB_INCLUDE <stdint.h>
-//#define LV_STDIO_INCLUDE  <stdio.h>
-//#define LV_STRING_INCLUDE <string.h>
+#define LV_STDIO_INCLUDE  <stdio.h>
+#define LV_STRING_INCLUDE <string.h>
 #define LV_MALLOC       lv_malloc_builtin
 #define LV_REALLOC      lv_realloc_builtin
 #define LV_FREE         lv_free_builtin
@@ -206,7 +206,7 @@
  *-----------*/
 
 /*Enable the log module*/
-#define LV_USE_LOG 1
+#define LV_USE_LOG 0
 #if LV_USE_LOG
 
     /*How important log should be added:
@@ -216,11 +216,11 @@
     *LV_LOG_LEVEL_ERROR       Only critical issue, when the system may fail
     *LV_LOG_LEVEL_USER        Only logs added by the user
     *LV_LOG_LEVEL_NONE        Do not log anything*/
-    #define LV_LOG_LEVEL LV_LOG_LEVEL_USER
+    #define LV_LOG_LEVEL      LV_LOG_LEVEL_USER
 
     /*1: Print the log with 'printf';
     *0: User need to register a callback with `lv_log_register_print_cb()`*/
-    #define LV_LOG_PRINTF 1
+    #define LV_LOG_PRINTF 0
 
     /*1: Enable print timestamp;
      *0: Disable print timestamp*/

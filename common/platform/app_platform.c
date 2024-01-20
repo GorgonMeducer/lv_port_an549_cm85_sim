@@ -43,7 +43,7 @@
 #endif
 
 #include "RTE_Components.h"
-#if defined(RTE_Compiler_EventRecorder)
+#if defined(RTE_Compiler_EventRecorder) || defined(RTE_CMSIS_View_EventRecorder)
 #   include <EventRecorder.h>
 #endif
 
@@ -129,7 +129,7 @@ bool device_specific_init(void)
 __attribute__((used, constructor(101)))
 void app_platform_init(void)
 {
-#if defined(RTE_Compiler_EventRecorder)
+#if defined(RTE_Compiler_EventRecorder) || defined(RTE_CMSIS_View_EventRecorder)
     EventRecorderInitialize(0, 1);
 #endif
 

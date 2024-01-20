@@ -18,7 +18,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "cmsis_compiler.h"
-
+#include "RTE_Components.h"
 
 #if defined(__clang__)
 #   pragma clang diagnostic push
@@ -145,6 +145,7 @@ void uart_config(uint32_t wUARTFrequency)
     CMSDK_UART0->CTRL = CMSDK_UART_CTRL_TXEN_Msk|CMSDK_UART_CTRL_RXEN_Msk;  
 }
 
+#if !defined(RTE_Compiler_EventRecorder) && !defined(RTE_CMSIS_View_EventRecorder)
 char stdin_getchar(void)
 {
     while(!(CMSDK_UART0->STATE & CMSDK_UART_STATE_RXBF_Msk));
@@ -183,10 +184,12 @@ int stderr_putchar(char txchar)
     return stdout_putchar(txchar);
 }
 
+
 void ttywrch (int ch)
 {
     stdout_putchar((char)ch);
 }
+#endif
 
 #if 0
 

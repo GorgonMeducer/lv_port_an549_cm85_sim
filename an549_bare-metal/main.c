@@ -122,6 +122,10 @@ int main(void)
         __LL_LCD_PRINT_BANNER("Hello LVGL!!");
     }
 
+#ifdef __PERF_COUNTER_COREMARK__
+    coremark_main();
+#endif
+
     while(1) {
 
     }

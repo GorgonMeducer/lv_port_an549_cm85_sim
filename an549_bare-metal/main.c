@@ -26,11 +26,15 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
-#include "demos/lv_demos.h"
-#include "ui.h"
+#include "RTE_Components.h"
 
-#include "lv_port_disp_template.h"
-#include "lv_port_indev_template.h"
+#if defined(RTE_GRAPHICS_LVGL) && RTE_GRAPHICS_LVGL
+#   include "demos/lv_demos.h"
+#   include "ui.h"
+
+#   include "lv_port_disp_template.h"
+#   include "lv_port_indev_template.h"
+#endif
 
 #if defined(__clang__)
 #   pragma clang diagnostic ignored "-Wcompound-token-split-by-macro"
@@ -44,6 +48,7 @@
 /*============================ PROTOTYPES ====================================*/
 /*============================ IMPLEMENTATION ================================*/
 
+#if defined(RTE_GRAPHICS_LVGL) && RTE_GRAPHICS_LVGL
 static void test(void)
 {
     lv_obj_t * btn = lv_btn_create(lv_scr_act());                   /*Add a button to the current screen*/
@@ -106,3 +111,20 @@ int main(void)
     }
     
 }
+
+#else
+
+int main(void)
+{
+    printf("Hello LVGL!!\r\n");
+    
+    __cycleof__("Draw strings on LCD") {
+        __LL_LCD_PRINT_BANNER("Hello LVGL!!");
+    }
+
+    while(1) {
+
+    }
+    
+}
+#endif

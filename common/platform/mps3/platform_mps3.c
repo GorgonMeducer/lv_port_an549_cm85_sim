@@ -35,7 +35,7 @@
 #   pragma clang diagnostic ignored "-Wmissing-noreturn"
 #endif
 
-__OVERRIDE_WEAK 
+__USED
 bool device_specific_init(void)
 {
 

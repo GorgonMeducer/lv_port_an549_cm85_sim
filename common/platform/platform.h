@@ -31,10 +31,14 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "arm_2d.h"
+
 
 //#include "Device.h"                     // Keil::Board Support:V2M-MPS2:Common
 #include "RTE_Components.h"             // Component selection
+#if defined(RTE_Acceleration_Arm_2D) && RTE_Acceleration_Arm_2D
+#   include "arm_2d.h"
+#endif
+
 //#include "Board_LED.h"                  // ::Board Support:LED
 //#include "Board_Buttons.h"              // ::Board Support:Buttons
 #include "Board_Touch.h"                // ::Board Support:Touchscreen

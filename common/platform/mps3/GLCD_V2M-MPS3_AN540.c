@@ -34,8 +34,8 @@
 #endif
 
 #include <stddef.h>
-//#include "RTE_Components.h"             /* Component selection */
-//#include CMSIS_device_header
+#include "RTE_Components.h"             /* Component selection */
+#include CMSIS_device_header
 
 #include "MPS3_CM55.h"
 #include "GLCD_Config.h"

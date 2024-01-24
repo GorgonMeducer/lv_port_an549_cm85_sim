@@ -453,41 +453,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>ui demo</GroupName>
-          <Files>
-            <File>
-              <FileName>ui.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\ui\ui.c</FilePath>
-            </File>
-            <File>
-              <FileName>ui.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\ui\ui.h</FilePath>
-            </File>
-            <File>
-              <FileName>ui_events.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\ui\ui_events.c</FilePath>
-            </File>
-            <File>
-              <FileName>ui_font_Number.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\ui\ui_font_Number.c</FilePath>
-            </File>
-            <File>
-              <FileName>ui_helpers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\ui\ui_helpers.c</FilePath>
-            </File>
-            <File>
-              <FileName>ui_helpers.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\..\ui\ui_helpers.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>::Acceleration</GroupName>
         </Group>
         <Group>
@@ -579,61 +544,6 @@
   </Targets>
 
   <RTE>
-    <packages>
-      <filter>
-        <targetInfos/>
-      </filter>
-      <package name="Arm-2D" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="CMSIS" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="CMSIS-Compiler" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="CMSIS-DSP" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="CMSIS-View" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="Cortex_DFP" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="V2M_MPS3_SSE_310_BSP" vendor="ARM">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="perf_counter" vendor="GorgonMeducer">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="ARM_Compiler" vendor="Keil">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
-      </package>
-      <package name="lvgl" vendor="LVGL" version="8.3.11">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-    </packages>
     <apis>
       <api Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" condition="CortexDevice" exclusive="1">
         <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
@@ -702,32 +612,32 @@
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Demo:Widgets" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+      <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Demos" Csub="Assets" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential">
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Essential" Cvendor="LVGL" Cversion="8.3.11">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+      <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Demos" Csub="Benchmark" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential-Assets">
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Extra Themes" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+      <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Demos" Csub="Widgets" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential-Assets">
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="GPU Arm-2D" Cvendor="LVGL" Cversion="1.2.2" condition="LVGL-GPU-Arm-2D">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+      <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Essential" Cvendor="LVGL" Cversion="9.0.0">
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </component>
-      <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential">
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+      <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential">
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
@@ -1105,65 +1015,63 @@
         <targetInfos/>
       </file>
       <file attr="config" category="sourceC" name="lv_cmsis_pack.c" version="1.0.0">
-        <instance index="0">RTE\LVGL\lv_cmsis_pack.c</instance>
+        <instance index="0" removed="1">RTE\LVGL\lv_cmsis_pack.c</instance>
         <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Essential" Cvendor="LVGL" Cversion="8.3.11"/>
         <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
-      <file attr="config" category="preIncludeGlobal" name="lv_conf_cmsis.h" version="1.0.4">
+      <file attr="config" category="preIncludeGlobal" name="lv_conf_cmsis.h" version="2.1.3">
         <instance index="0">RTE\LVGL\lv_conf_cmsis.h</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Essential" Cvendor="LVGL" Cversion="8.3.11"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Essential" Cvendor="LVGL" Cversion="9.0.0"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceC" name="examples\porting\lv_port_disp_template.c" version="1.0.1">
+      <file attr="config" category="sourceC" name="examples\porting\lv_port_disp_template.c" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_disp_template.c</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="header" name="examples\porting\lv_port_disp_template.h" version="1.0.1">
+      <file attr="config" category="header" name="examples\porting\lv_port_disp_template.h" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_disp_template.h</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceC" name="examples\porting\lv_port_fs_template.c" version="1.0.0">
+      <file attr="config" category="sourceC" name="examples\porting\lv_port_fs_template.c" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_fs_template.c</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="header" name="examples\porting\lv_port_fs_template.h" version="1.0.0">
+      <file attr="config" category="header" name="examples\porting\lv_port_fs_template.h" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_fs_template.h</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="sourceC" name="examples\porting\lv_port_indev_template.c" version="1.0.0">
+      <file attr="config" category="sourceC" name="examples\porting\lv_port_indev_template.c" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_indev_template.c</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
       </file>
-      <file attr="config" category="header" name="examples\porting\lv_port_indev_template.h" version="1.0.0">
+      <file attr="config" category="header" name="examples\porting\lv_port_indev_template.h" version="2.1.0">
         <instance index="0">RTE\LVGL\lv_port_indev_template.h</instance>
-        <component Cbundle="LVGL" Cclass="LVGL" Cgroup="lvgl" Csub="Porting" Cvendor="LVGL" Cversion="8.3.11" condition="LVGL-Essential"/>
-        <package name="lvgl" schemaVersion="1.4" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="8.3.11"/>
+        <component Cbundle="LVGL9" Cclass="LVGL" Cgroup="Porting" Cvendor="LVGL" Cversion="9.0.0" condition="LVGL-Essential"/>
+        <package name="lvgl" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/lvgl/lvgl/master/env_support/cmsis-pack/" vendor="LVGL" version="9.0.0"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>

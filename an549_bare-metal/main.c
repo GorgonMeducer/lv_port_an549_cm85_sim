@@ -30,8 +30,6 @@
 
 #if defined(RTE_GRAPHICS_LVGL)
 #   include "demos/lv_demos.h"
-#   include "ui.h"
-
 #   include "lv_port_disp_template.h"
 #   include "lv_port_indev_template.h"
 #endif
@@ -61,12 +59,6 @@ static void test(void)
     lv_obj_center(label);                                           /*Align the label to the center*/
 }
 
-#if LV_USE_DEMO_BENCHMARK && LVGL_VERSION_MAJOR == 8
-static void on_benchmark_finished(void)
-{
-    disp_enable_update();
-}
-#endif
 
 int main(void)
 {
@@ -75,34 +67,29 @@ int main(void)
     __cycleof__("Draw strings on LCD") {
         __LL_LCD_PRINT_BANNER("Hello LVGL!!");
     }
-    
+
     lv_init();
+    
     lv_port_disp_init();
     lv_port_indev_init();
-    
+
 #if LV_USE_DEMO_BENCHMARK
 
     __LL_LCD_PRINT(24, 0, "Running LVGL Benchmark...");
     __LL_LCD_PRINT(25, 0, "Please stand by...");
     __LL_LCD_PRINT(28, 0, "NOTE: You will NOT see anything until the end.");
 
-#   if      LVGL_VERSION_MAJOR == 8
-    //disp_disable_update();
-    lv_demo_benchmark_set_finished_cb(on_benchmark_finished);
-    lv_demo_benchmark_set_max_speed(true);
     lv_demo_benchmark();
-    //lv_demo_benchmark_run_scene(31);
-#   elif    LVGL_VERSION_MAJOR == 9
-    lv_demo_benchmark(LV_DEMO_BENCHMARK_MODE_RENDER_ONLY);
     
     //lv_demo_benchmark_run_scene(LV_DEMO_BENCHMARK_MODE_RENDER_AND_DRIVER, 26*2-1);      // run scene no 31
-#   endif
-
-    
+#elif LV_USE_DEMO_RENDER
+    lv_demo_render(LV_DEMO_RENDER_SCENE_IMAGE_NORMAL, 128);
 #elif LV_USE_DEMO_WIDGETS
     lv_demo_widgets();
+#elif LV_USE_DEMO_MUSIC
+    lv_demo_music();
 #else
-    ui_init();
+    test();
 #endif
     
     while(1) {

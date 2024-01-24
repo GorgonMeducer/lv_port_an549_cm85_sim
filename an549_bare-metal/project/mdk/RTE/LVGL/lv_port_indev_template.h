@@ -4,7 +4,7 @@
  *
  */
 
- /*Copy this file as "lv_port_indev.h" and set this value to "1" to enable content*/
+/*Copy this file as "lv_port_indev.h" and set this value to "1" to enable content*/
 #if 1
 
 #ifndef LV_PORT_INDEV_TEMPL_H
@@ -17,7 +17,11 @@ extern "C" {
 /*********************
  *      INCLUDES
  *********************/
+#if defined(LV_LVGL_H_INCLUDE_SIMPLE)
 #include "lvgl.h"
+#else
+#include "lvgl/lvgl.h"
+#endif
 
 /*********************
  *      DEFINES
@@ -30,8 +34,7 @@ extern "C" {
 /**********************
  * GLOBAL PROTOTYPES
  **********************/
- 
-extern void lv_port_indev_init(void);
+void lv_port_indev_init(void);
 
 /**********************
  *      MACROS

@@ -123,10 +123,10 @@
 
     #if !defined(LV_USE_DRAW_SW_ASM) && defined(RTE_Acceleration_Arm_2D)
         /*turn-on helium acceleration when Arm-2D and the Helium-powered device are detected */
-        //#if defined(__ARM_FEATURE_MVE) && __ARM_FEATURE_MVE
+        #if defined(__ARM_FEATURE_MVE) && __ARM_FEATURE_MVE
             #define LV_USE_DRAW_SW_ASM  LV_DRAW_SW_ASM_HELIUM
             #define LV_USE_DRAW_ARM2D_SYNC  1
-        //#endif
+        #endif
     #endif
 
     #ifndef LV_USE_DRAW_SW_ASM

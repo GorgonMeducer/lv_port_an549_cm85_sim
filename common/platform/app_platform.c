@@ -43,6 +43,8 @@
 #endif
 
 #include "RTE_Components.h"
+
+#include CMSIS_device_header
 #if defined(RTE_Compiler_EventRecorder) || defined(RTE_CMSIS_View_EventRecorder)
 #   include <EventRecorder.h>
 #endif
@@ -123,6 +125,7 @@ int	ARM_WRAP(printf) (const char *__restrict format, ...)
 __WEAK 
 bool device_specific_init(void)
 {
+    //SysTick_Config(SystemCoreClock / 1000ul);
     return false;
 }
 

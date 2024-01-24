@@ -28,7 +28,7 @@
 
 #include "RTE_Components.h"
 
-#if defined(RTE_GRAPHICS_LVGL) && RTE_GRAPHICS_LVGL
+#if defined(RTE_GRAPHICS_LVGL)
 #   include "demos/lv_demos.h"
 #   include "ui.h"
 
@@ -48,7 +48,7 @@
 /*============================ PROTOTYPES ====================================*/
 /*============================ IMPLEMENTATION ================================*/
 
-#if defined(RTE_GRAPHICS_LVGL) && RTE_GRAPHICS_LVGL
+#if defined(RTE_GRAPHICS_LVGL)
 static void test(void)
 {
     lv_obj_t * btn = lv_btn_create(lv_scr_act());                   /*Add a button to the current screen*/
@@ -87,7 +87,7 @@ int main(void)
     __LL_LCD_PRINT(28, 0, "NOTE: You will NOT see anything until the end.");
 
 #   if      LVGL_VERSION_MAJOR == 8
-    disp_disable_update();
+    //disp_disable_update();
     lv_demo_benchmark_set_finished_cb(on_benchmark_finished);
     lv_demo_benchmark_set_max_speed(true);
     lv_demo_benchmark();
@@ -116,18 +116,22 @@ int main(void)
 
 int main(void)
 {
-    printf("Hello LVGL!!\r\n");
-    
+    printf("Hello Template!!");
+
     __cycleof__("Draw strings on LCD") {
         __LL_LCD_PRINT_BANNER("Hello LVGL!!");
     }
+    
+
 
 #ifdef __PERF_COUNTER_COREMARK__
     coremark_main();
 #endif
 
     while(1) {
-
+        //delay_ms(1000ul);
+        //printf("[%016llx]", get_system_ticks());
+        //printf("%lld\r\n", get_system_ms());
     }
     
 }

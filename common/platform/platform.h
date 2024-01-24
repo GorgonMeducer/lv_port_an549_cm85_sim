@@ -35,7 +35,8 @@
 
 //#include "Device.h"                     // Keil::Board Support:V2M-MPS2:Common
 #include "RTE_Components.h"             // Component selection
-#if defined(RTE_Acceleration_Arm_2D) && RTE_Acceleration_Arm_2D
+
+#if defined(RTE_Acceleration_Arm_2D)
 #   include "arm_2d.h"
 #endif
 

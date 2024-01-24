@@ -145,7 +145,7 @@ void uart_config(uint32_t wUARTFrequency)
     CMSDK_UART0->CTRL = CMSDK_UART_CTRL_TXEN_Msk|CMSDK_UART_CTRL_RXEN_Msk;  
 }
 
-#if !defined(RTE_Compiler_EventRecorder) && !defined(RTE_CMSIS_View_EventRecorder)
+#if !defined(RTE_Compiler_EventRecorder) && !defined(RTE_CMSIS_View_EventRecorder) && !defined(RTE_CMSIS_Compiler_STDOUT_ITM)
 char stdin_getchar(void)
 {
     while(!(CMSDK_UART0->STATE & CMSDK_UART_STATE_RXBF_Msk));

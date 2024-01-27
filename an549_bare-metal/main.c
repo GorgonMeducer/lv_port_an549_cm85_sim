@@ -116,9 +116,9 @@ int main(void)
 #endif
 
     while(1) {
-        //delay_ms(1000ul);
-        //printf("[%016llx]", get_system_ticks());
-        //printf("%lld\r\n", get_system_ms());
+        delay_ms(1000ul);
+        printf("[%016llx]", get_system_ticks());
+        printf("%lld\r\n", get_system_ms());
     }
     
 }

@@ -538,31 +538,6 @@
   </Targets>
 
   <RTE>
-    <packages>
-      <filter>
-        <targetInfos/>
-      </filter>
-      <package name="CMSIS-Compiler" vendor="ARM" version="2.0.0">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-      <package name="CMSIS" vendor="ARM" version="6.0.0">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-      <package name="Cortex_DFP" vendor="ARM" version="1.0.0">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-      <package name="perf_counter" vendor="GorgonMeducer" version="2.2.5-dev31">
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-CM85" versionMatchMode="fixed"/>
-        </targetInfos>
-      </package>
-    </packages>
     <apis>
       <api Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" condition="CortexDevice" exclusive="1">
         <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
@@ -1027,7 +1002,7 @@
       <file attr="config" category="sourceC" name="benchmark\coremark_port\core_portme.c" version="1.1.2">
         <instance index="0">RTE\Utilities\core_portme.c</instance>
         <component Cclass="Utilities" Cgroup="perf_counter" Csub="Benchmark" Cvariant="Coremark" Cvendor="GorgonMeducer" Cversion="1.1.2" condition="perf_counter"/>
-        <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="2.2.5-dev31+gde78403"/>
+        <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="9.9.9"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>
@@ -1035,7 +1010,7 @@
       <file attr="config" category="header" name="benchmark\coremark_port\core_portme.h" version="1.1.2">
         <instance index="0">RTE\Utilities\core_portme.h</instance>
         <component Cclass="Utilities" Cgroup="perf_counter" Csub="Benchmark" Cvariant="Coremark" Cvendor="GorgonMeducer" Cversion="1.1.2" condition="perf_counter"/>
-        <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="2.2.5-dev31+gde78403"/>
+        <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="9.9.9"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-CM85"/>
         </targetInfos>

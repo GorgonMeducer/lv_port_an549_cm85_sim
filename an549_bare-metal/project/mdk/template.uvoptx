@@ -157,6 +157,22 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>1322</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>268443938</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\gabriel\AppData\Local\Arm\Packs\GorgonMeducer\perf_counter\2.2.5-dev31\perfc_port_pmu.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\template\perfc_port_pmu.c\1322</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>1288</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>268443842</Address>
@@ -166,12 +182,12 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c</Filename>
+          <Filename>C:\Users\gabriel\AppData\Local\Arm\Packs\GorgonMeducer\perf_counter\2.2.5-dev31\perfc_port_pmu.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\template\C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c\1288</Expression>
+          <Expression>\\template\perfc_port_pmu.c\1288</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>1299</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -182,12 +198,12 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c</Filename>
+          <Filename>C:\Users\gabriel\AppData\Local\Arm\Packs\GorgonMeducer\perf_counter\2.2.5-dev31\perfc_port_pmu.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\template\C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c\1299</Expression>
+          <Expression>\\template\perfc_port_pmu.c\1299</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>1310</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -198,41 +214,9 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c</Filename>
+          <Filename>C:\Users\gabriel\AppData\Local\Arm\Packs\GorgonMeducer\perf_counter\2.2.5-dev31\perfc_port_pmu.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\template\C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c\1310</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>1324</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>268443974</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\template\C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c\1324</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>1322</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>C:/Users/gabriel/AppData/Local/Arm/Packs/GorgonMeducer/perf_counter/2.2.5-dev31/perfc_port_pmu.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\template\perfc_port_pmu.c\1310</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

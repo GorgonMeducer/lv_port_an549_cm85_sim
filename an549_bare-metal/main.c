@@ -110,10 +110,28 @@ int main(void)
     }
     
 
-
+    uint64_t dwInstructions = perfc_pmu_get_instruction_count();
+    uint32_t dwInsCalib = perfc_pmu_get_instruction_count() - dwInstructions;
+    int64_t lCycles = 0;
+    
+    dwInstructions = perfc_pmu_get_instruction_count();
+    
+    __cycleof__("Coremark", { lCycles = __cycle_count__; }) {
 #ifdef __PERF_COUNTER_COREMARK__
     coremark_main();
 #endif
+    }
+    dwInstructions = perfc_pmu_get_instruction_count() - dwInstructions - dwInsCalib;
+    
+    printf( "\r\n"
+            "No. Instrunctions: %lld\r\n"
+            "Cycle Used: %lld\r\n"
+            "Cycles per Instructions: %3.3f \r\n", 
+
+            dwInstructions,
+            lCycles,
+            (double)lCycles / (double)dwInstructions);
+    
 
     while(1) {
         delay_ms(1000ul);

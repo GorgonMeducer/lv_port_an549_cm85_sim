@@ -56,7 +56,7 @@
   #define GLCD_PORT   CLCD
 #endif
 
-#if defined(__USE_AN547__)
+#if defined(__USE_AN547__) || defined(__USE_AN555__)
 #   undef GLCD_PORT
 #   define GLCD_PORT        ((CLCD_TypeDef *)0x4930A000)
 

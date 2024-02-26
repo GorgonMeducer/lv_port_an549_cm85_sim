@@ -111,4 +111,7 @@ void SystemInit (void)
 #endif
 
   SystemCoreClock = SYSTEM_CLOCK;
+  
+  SCB_EnableDCache();
+  SCB_EnableICache();
 }

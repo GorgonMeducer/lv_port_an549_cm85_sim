@@ -107,8 +107,8 @@ int main(void)
 
     __cycleof__("Draw strings on LCD") {
         __LL_LCD_PRINT_BANNER("Hello LVGL!!");
+        printf("SystemCoreClock: %d", SystemCoreClock);
     }
-    
 
     uint64_t dwInstructions = perfc_pmu_get_instruction_count();
     uint32_t dwInsCalib = perfc_pmu_get_instruction_count() - dwInstructions;
@@ -124,7 +124,7 @@ int main(void)
     dwInstructions = perfc_pmu_get_instruction_count() - dwInstructions - dwInsCalib;
     
     printf( "\r\n"
-            "No. Instrunctions: %lld\r\n"
+            "No. Instructions: %lld\r\n"
             "Cycle Used: %lld\r\n"
             "Cycles per Instructions: %3.3f \r\n", 
 

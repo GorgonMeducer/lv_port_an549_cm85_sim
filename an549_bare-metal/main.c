@@ -28,6 +28,10 @@
 
 #include "RTE_Components.h"
 
+#if defined(RTE_CMSIS_RTOS2)
+#include "cmsis_os2.h"
+#endif
+
 #if defined(RTE_GRAPHICS_LVGL)
 #   include "demos/lv_demos.h"
 #   include "lv_port_disp_template.h"
@@ -39,6 +43,15 @@
 #endif
 
 /*============================ MACROS ========================================*/
+//-------- <<< Use Configuration Wizard in Context Menu >>> -----------------
+
+// <o>Arm-2D APP Stack Size <1024-32767>
+// <i> Specify the arm-2d application thread stack size
+// <i> Default: 2048
+#ifndef APP_STACK_SIZE
+#   define APP_STACK_SIZE       (3072ul)
+#endif
+
 /*============================ MACROFIED FUNCTIONS ===========================*/
 /*============================ TYPES =========================================*/
 /*============================ GLOBAL VARIABLES ==============================*/
@@ -101,14 +114,20 @@ int main(void)
 
 #else
 
-int main(void)
+ __NO_RETURN
+void app_2d_main_thread (void *argument) 
 {
+    
+    init_task_cycle_counter();
+    
     printf("Hello Template!!");
 
     __cycleof__("Draw strings on LCD") {
         __LL_LCD_PRINT_BANNER("Hello LVGL!!");
         printf("SystemCoreClock: %d", SystemCoreClock);
     }
+    
+    fflush(&__stdout);
 
     uint64_t dwInstructions = perfc_pmu_get_instruction_count();
     uint32_t dwInsCalib = perfc_pmu_get_instruction_count() - dwInstructions;
@@ -134,10 +153,38 @@ int main(void)
     
 
     while(1) {
-        delay_ms(1000ul);
-        printf("[%016llx]", get_system_ticks());
-        printf("%lld\r\n", get_system_ms());
+        osDelay(1000ul);
+//        printf("[%016llx]", get_system_ticks());
+//        printf("%lld\r\n", get_system_ms());
     }
+
+    //osThreadExit();
+}
+
+extern void console_init(void);
+
+int main(void)
+{
+
+    /* Initialize CMSIS-RTOS2 */
+    osKernelInitialize ();
+    console_init();
+
+    static uint64_t thread1_stk_1[APP_STACK_SIZE / sizeof(uint64_t)];
+     
+    const osThreadAttr_t thread1_attr = {
+      .stack_mem  = &thread1_stk_1[0],
+      .stack_size = sizeof(thread1_stk_1)
+    };
+
+    /* Create application main thread */
+    osThreadNew(app_2d_main_thread, NULL, &thread1_attr);
+
+    /* Start thread execution */
+    osKernelStart();
     
+    while(1) {
+    }
+
 }
 #endif

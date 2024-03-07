@@ -130,7 +130,7 @@ typedef struct
 /* ================             Peripheral declaration             ================ */
 /* ================================================================================ */
 
-#if defined(__USE_AN547__)
+#if defined(__USE_AN547__) || defined(__USE_AN555__)
 #define CMSDK_UART0_BASE_ADDRESS	(0x49303000ul)
 #else
 #define CMSDK_UART0_BASE_ADDRESS	(0x41303000ul)

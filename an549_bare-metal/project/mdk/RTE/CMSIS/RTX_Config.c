@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2021 Arm Limited. All rights reserved.
+ * Copyright (c) 2013-2023 Arm Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -17,7 +17,7 @@
  *
  * -----------------------------------------------------------------------------
  *
- * $Revision:   V5.1.1
+ * $Revision:   V5.2.0
  *
  * Project:     CMSIS-RTOS RTX
  * Title:       RTX Configuration
@@ -27,12 +27,115 @@
  
 #include "cmsis_compiler.h"
 #include "rtx_os.h"
+
+
+#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
+
+#include <stdio.h>
+
+#include "arm_2d_helper.h"
+#include "arm_2d_disp_adapters.h"
+
+#include "arm_2d_scene_console.h"
+
+extern
+int32_t GLCD_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap);
+
+void Disp0_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap)
+{
+    GLCD_DrawBitmap(x, y, width, height, bitmap);
+}
+
+
+
+ARM_NOINIT
+static user_scene_console_t DEFAULT_CONSOLE;
+
+static 
+uintptr_t s_hWaitConsole = 0;
+
+static void __console_wait_for_flush_sync(void)
+{
+    arm_2d_port_wait_for_semaphore(s_hWaitConsole);
+}
+
+static void __console_signal_flush_sync(void)
+{
+    arm_2d_port_set_semaphore(s_hWaitConsole);
+}
+
+int $Sub$$stdout_putchar(int ch)
+{
+    
+    while (!console_box_putchar(&DEFAULT_CONSOLE.tConsole, ch)) {
+        __console_wait_for_flush_sync();
+    }
+    
+    return ch;
+}
+
+int $Sub$$fflush(FILE *fn)
+{
+    extern int $Super$$fflush(FILE *fn);
+    
+    int result = $Super$$fflush(fn);
+    if (fn == &__stdout) {
+        __console_wait_for_flush_sync();
+    }
+    return result;
+}
+
+void console_init(void)
+{
+    static bool s_bInitalized = false;
+
+    arm_irq_safe {
+        if (s_bInitalized) {
+            arm_exit_irq_safe;
+        }
+        s_bInitalized = true;
+        
+        /* RTX5 requires irq is enabled */
+        __enable_irq();
+        
+        arm_2d_init();
+        
+        disp_adapter0_init();
+        arm_2d_scene_console_init(&DISP0_ADAPTER, &DEFAULT_CONSOLE);
+        
+        
+        s_hWaitConsole = arm_2d_port_new_semaphore();
+    }
+}
+
+#else
+void console_init(void)
+{}
+#endif
+
+
+
  
 // OS Idle Thread
 __WEAK __NO_RETURN void osRtxIdleThread (void *argument) {
   (void)argument;
 
+#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
+
+    console_init();
+
+    
+    while(1) {
+ 
+        if (arm_fsm_rt_cpl == disp_adapter0_task()) {
+            __console_signal_flush_sync();
+        }
+        
+    }
+
+#else
   for (;;) {}
+#endif
 }
  
 // OS Error Callback function
@@ -54,6 +157,9 @@ __WEAK uint32_t osRtxErrorNotify (uint32_t code, void *object_id) {
       break;
     case osRtxErrorClibMutex:
       // Standard C/C++ library mutex initialization failed
+      break;
+    case osRtxErrorSVC:
+      // Invalid SVC function called (function=object_id)
       break;
     default:
       // Reserved

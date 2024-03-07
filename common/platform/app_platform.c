@@ -93,33 +93,33 @@ void SysTick_Handler(void)
 /*----------------------------------------------------------------------------*
  * A thread safe printf                                                       *
  *----------------------------------------------------------------------------*/
-#if defined(RTE_CMSIS_RTOS2)
+//#if defined(RTE_CMSIS_RTOS2)
 
-#if defined(__IS_COMPILER_GCC__)
-#   pragma GCC diagnostic push
-#   pragma GCC diagnostic ignored "-Wpedantic"
-#endif
+//#if defined(__IS_COMPILER_GCC__)
+//#   pragma GCC diagnostic push
+//#   pragma GCC diagnostic ignored "-Wpedantic"
+//#endif
 
-#if defined(__IS_COMPILER_GCC)
-_ATTRIBUTE ((__format__ (__printf__, 1, 2)))
-#elif defined(__IS_ARM_COMPILER_5__) || defined(__IS_ARM_COMPILER_6__)
-#pragma __printf_args
-__attribute__((__nonnull__(1)))
-#endif
-int	ARM_WRAP(printf) (const char *__restrict format, ...)
-{
-    va_list va;
-    va_start(va, format);
-    int ret = 0;
-    arm_thread_safe { 
-        ret = vprintf(format, va);
-    }
-    va_end(va);
-    
-    return ret;
-}
+//#if defined(__IS_COMPILER_GCC)
+//_ATTRIBUTE ((__format__ (__printf__, 1, 2)))
+//#elif defined(__IS_ARM_COMPILER_5__) || defined(__IS_ARM_COMPILER_6__)
+//#pragma __printf_args
+//__attribute__((__nonnull__(1)))
+//#endif
+//int	ARM_WRAP(printf) (const char *__restrict format, ...)
+//{
+//    va_list va;
+//    va_start(va, format);
+//    int ret = 0;
+//    arm_thread_safe { 
+//        ret = vprintf(format, va);
+//    }
+//    va_end(va);
+//    
+//    return ret;
+//}
 
-#endif
+//#endif
 
 
 __WEAK 

@@ -115,6 +115,6 @@ void SystemInit (void)
   SCB_EnableDCache();
   SCB_EnableICache();
 
-extern void uart_config(uint32_t wUARTFrequency);
-  uart_config(25000000);
+//extern void uart_config(uint32_t wUARTFrequency);
+//  uart_config(25000000);
 }

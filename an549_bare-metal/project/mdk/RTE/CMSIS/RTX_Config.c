@@ -49,7 +49,7 @@ void Disp0_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, c
 
 
 ARM_NOINIT
-static user_scene_console_t DEFAULT_CONSOLE;
+static user_scene_console_t LCD_CONSOLE;
 
 static 
 uintptr_t s_hWaitConsole = 0;
@@ -64,16 +64,18 @@ static void __console_signal_flush_sync(void)
     arm_2d_port_set_semaphore(s_hWaitConsole);
 }
 
-int $Sub$$stdout_putchar(int ch)
+
+int stdout_putchar(int ch)
 {
     
-    while (!console_box_putchar(&DEFAULT_CONSOLE.tConsole, ch)) {
+    while (!console_box_putchar(&LCD_CONSOLE.tConsole, ch)) {
         __console_wait_for_flush_sync();
     }
     
     return ch;
 }
 
+#if __IS_COMPILER_ARM_COMPILER__
 int $Sub$$fflush(FILE *fn)
 {
     extern int $Super$$fflush(FILE *fn);
@@ -84,8 +86,9 @@ int $Sub$$fflush(FILE *fn)
     }
     return result;
 }
+#endif
 
-void console_init(void)
+void arm_2d_lcd_console_init(void)
 {
     static bool s_bInitalized = false;
 
@@ -101,7 +104,7 @@ void console_init(void)
         arm_2d_init();
         
         disp_adapter0_init();
-        arm_2d_scene_console_init(&DISP0_ADAPTER, &DEFAULT_CONSOLE);
+        arm_2d_scene_console_init(&DISP0_ADAPTER, &LCD_CONSOLE);
         
         
         s_hWaitConsole = arm_2d_port_new_semaphore();
@@ -114,15 +117,12 @@ void console_init(void)
 #endif
 
 
-
- 
-// OS Idle Thread
-__WEAK __NO_RETURN void osRtxIdleThread (void *argument) {
-  (void)argument;
-
+__NO_RETURN
+void arm_2d_lcd_console_insert_to_rtos_idle_task(void)
+{
 #if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
 
-    console_init();
+    arm_2d_lcd_console_init();
 
     
     while(1) {
@@ -132,9 +132,18 @@ __WEAK __NO_RETURN void osRtxIdleThread (void *argument) {
         }
         
     }
+#endif
+}
+ 
+// OS Idle Thread
+__WEAK __NO_RETURN void osRtxIdleThread (void *argument) {
+  (void)argument;
 
+#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
+
+    arm_2d_lcd_console_insert_to_rtos_idle_task();
 #else
-  for (;;) {}
+    for (;;) {}
 #endif
 }
  

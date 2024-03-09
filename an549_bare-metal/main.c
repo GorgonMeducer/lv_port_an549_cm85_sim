@@ -161,14 +161,14 @@ void app_2d_main_thread (void *argument)
     //osThreadExit();
 }
 
-extern void console_init(void);
+extern void arm_2d_lcd_console_init(void);
 
 int main(void)
 {
 
     /* Initialize CMSIS-RTOS2 */
     osKernelInitialize ();
-    console_init();
+    arm_2d_lcd_console_init();
 
     static uint64_t thread1_stk_1[APP_STACK_SIZE / sizeof(uint64_t)];
      

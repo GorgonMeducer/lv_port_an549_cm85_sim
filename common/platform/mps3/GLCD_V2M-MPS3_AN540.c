@@ -785,6 +785,13 @@ int32_t GLCD_DrawBitmap (uint32_t x, uint32_t y, uint32_t width, uint32_t height
   return 0;
 }
 
+extern
+int32_t GLCD_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap);
+
+void Disp0_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap)
+{
+    GLCD_DrawBitmap(x, y, width, height, bitmap);
+}
 
 /**
   \fn          int32_t GLCD_VScroll (uint32_t dy)

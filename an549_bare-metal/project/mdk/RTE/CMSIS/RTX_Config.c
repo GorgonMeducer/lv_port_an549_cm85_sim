@@ -28,118 +28,16 @@
 #include "cmsis_compiler.h"
 #include "rtx_os.h"
 
-
-#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
-
-#include <stdio.h>
-
-#include "arm_2d_helper.h"
-#include "arm_2d_disp_adapters.h"
-
-#include "arm_2d_scene_console.h"
-
-extern
-int32_t GLCD_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap);
-
-void Disp0_DrawBitmap(uint32_t x, uint32_t y, uint32_t width, uint32_t height, const uint8_t *bitmap)
-{
-    GLCD_DrawBitmap(x, y, width, height, bitmap);
-}
-
-
-
-ARM_NOINIT
-static user_scene_console_t LCD_CONSOLE;
-
-static 
-uintptr_t s_hWaitConsole = 0;
-
-static void __console_wait_for_flush_sync(void)
-{
-    arm_2d_port_wait_for_semaphore(s_hWaitConsole);
-}
-
-static void __console_signal_flush_sync(void)
-{
-    arm_2d_port_set_semaphore(s_hWaitConsole);
-}
-
-
-int stdout_putchar(int ch)
-{
-    
-    while (!console_box_putchar(&LCD_CONSOLE.tConsole, ch)) {
-        __console_wait_for_flush_sync();
-    }
-    
-    return ch;
-}
-
-#if __IS_COMPILER_ARM_COMPILER__
-int $Sub$$fflush(FILE *fn)
-{
-    extern int $Super$$fflush(FILE *fn);
-    
-    int result = $Super$$fflush(fn);
-    if (fn == &__stdout) {
-        __console_wait_for_flush_sync();
-    }
-    return result;
-}
-#endif
-
-void arm_2d_lcd_console_init(void)
-{
-    static bool s_bInitalized = false;
-
-    arm_irq_safe {
-        if (s_bInitalized) {
-            arm_exit_irq_safe;
-        }
-        s_bInitalized = true;
-        
-        /* RTX5 requires irq is enabled */
-        __enable_irq();
-        
-        arm_2d_init();
-        
-        disp_adapter0_init();
-        arm_2d_scene_console_init(&DISP0_ADAPTER, &LCD_CONSOLE);
-        
-        
-        s_hWaitConsole = arm_2d_port_new_semaphore();
-    }
-}
-
-#else
-void console_init(void)
-{}
+#if defined(RTE_CMSIS_Compiler_STDOUT_LCD_Console)
+#   include "arm_2d_helper_lcd_console.h"
 #endif
 
 
-__NO_RETURN
-void arm_2d_lcd_console_insert_to_rtos_idle_task(void)
-{
-#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
-
-    arm_2d_lcd_console_init();
-
-    
-    while(1) {
- 
-        if (arm_fsm_rt_cpl == disp_adapter0_task()) {
-            __console_signal_flush_sync();
-        }
-        
-    }
-#endif
-}
- 
 // OS Idle Thread
 __WEAK __NO_RETURN void osRtxIdleThread (void *argument) {
   (void)argument;
 
-#if defined(RTE_Acceleration_Arm_2D_Helper_Disp_Adapter0)
+#if defined(RTE_CMSIS_Compiler_STDOUT_LCD_Console)
 
     arm_2d_lcd_console_insert_to_rtos_idle_task();
 #else

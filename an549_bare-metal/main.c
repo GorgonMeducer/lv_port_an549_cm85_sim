@@ -161,7 +161,7 @@ void app_2d_main_thread (void *argument)
     //osThreadExit();
 }
 
-extern void arm_2d_lcd_console_init(void);
+#include "arm_2d_helper_lcd_console.h"
 
 int main(void)
 {

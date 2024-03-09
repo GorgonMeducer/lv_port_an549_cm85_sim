@@ -133,7 +133,7 @@
             <UseExternalTool>1</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>1</Capability>
+            <Capability>0</Capability>
             <DriverSelection>4102</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -1231,8 +1231,8 @@
           <targetInfo name="V2M-MPS3-AN555"/>
         </targetInfos>
       </component>
-      <component Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="Custom" Cvendor="ARM" Cversion="1.0.0" condition="CORE" custom="1">
-        <package name="CMSIS-Compiler" schemaVersion="1.7.27" url="https://www.keil.com/pack/" vendor="ARM" version="2.0.0"/>
+      <component Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="LCD Console" Cvendor="ARM" Cversion="1.0.0" condition="STDOUT Dependency">
+        <package name="Arm-2D" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="ARM" version="9.9.99"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-AN549"/>
           <targetInfo name="V2M-MPS3-AN555"/>

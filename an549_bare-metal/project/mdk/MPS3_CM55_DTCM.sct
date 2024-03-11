@@ -58,15 +58,15 @@ LR_ROM __ROM_BASE __ROM_SIZE  {                                                 
     }
 
     RW_RAM1 __RAM1_BASE __RAM1_RW_SIZE {
-        * (+RW +ZI)
+        .ANY (+RW +ZI)
     }
 
     ARM_LIB_STACK +0 ALIGN 8 EMPTY __STACK_SIZE {                      ; Reserve empty region for stack
     }
 
     RM_RAM_NOINIT +0 UNINIT {
-        * (.bss.noinit)
-        * (.bss.noinit.*)
+        .ANY (.bss.noinit)
+        .ANY (.bss.noinit.*)
     }
 
     ARM_LIB_HEAP  __HEAP_BASE ALIGN 8 EMPTY __HEAP_SIZE  {                      ; Reserve empty region for heap

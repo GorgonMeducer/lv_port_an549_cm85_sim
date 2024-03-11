@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2021 Arm Limited. All rights reserved.
+ * Copyright (c) 2009-2024 Arm Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -184,13 +184,13 @@ extern "C" {
 // <q>Disable the default scene
 // <i> Remove the default scene for this display adapter. We highly recommend you to disable the default scene when creating real applications.
 #ifndef __DISP0_CFG_DISABLE_DEFAULT_SCENE__
-#   define __DISP0_CFG_DISABLE_DEFAULT_SCENE__                     1
+#   define __DISP0_CFG_DISABLE_DEFAULT_SCENE__                     0
 #endif
 
 // <q>Disable the navigation layer
 // <i> Remove the navigation layer for this display adapter. NOTE: Disable the navigation layer will also remove the real-time FPS display.
 #ifndef __DISP0_CFG_DISABLE_NAVIGATION_LAYER__
-#   define __DISP0_CFG_DISABLE_NAVIGATION_LAYER__                  1
+#   define __DISP0_CFG_DISABLE_NAVIGATION_LAYER__                  0
 #endif
 
 // <q> Enable Console
@@ -203,7 +203,7 @@ extern "C" {
 // <o> Console Input Buffer Size
 // <i> The size of console input buffer, 0 means no input buffer
 #ifndef __DISP0_CFG_CONSOLE_INPUT_BUFFER__
-#   define __DISP0_CFG_CONSOLE_INPUT_BUFFER__                       256
+#   define __DISP0_CFG_CONSOLE_INPUT_BUFFER__                       255
 #endif
 
 // <o> Console Display Time in ms <1000-0xFFFFFFFF>

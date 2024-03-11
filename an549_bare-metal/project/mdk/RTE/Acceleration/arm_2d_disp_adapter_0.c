@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009-2022 Arm Limited. All rights reserved.
+ * Copyright (c) 2009-2024 Arm Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -17,7 +17,6 @@
  */
 
 /*============================ INCLUDES ======================================*/
-
 
 #include "arm_2d.h"
 
@@ -727,7 +726,6 @@ void disp_adapter0_navigator_init(void)
 }
 #endif
 
-
 #if __DISP0_CFG_USE_CONSOLE__
 
 #include <stdarg.h>
@@ -768,6 +766,7 @@ bool disp_adapter0_putchar(uint8_t chChar)
 
     return console_box_putchar(&DISP0_CONSOLE.tConsole,chChar);
 }
+
 #endif
 
 /*----------------------------------------------------------------------------*

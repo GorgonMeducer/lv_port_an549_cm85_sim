@@ -49,7 +49,7 @@
 // <i> Specify the arm-2d application thread stack size
 // <i> Default: 2048
 #ifndef APP_STACK_SIZE
-#   define APP_STACK_SIZE       (3072ul)
+#   define APP_STACK_SIZE       (4096ul)
 #endif
 
 /*============================ MACROFIED FUNCTIONS ===========================*/
@@ -114,6 +114,9 @@ int main(void)
 
 #else
 
+extern
+void test_entry(void);
+
  __NO_RETURN
 void app_2d_main_thread (void *argument) 
 {
@@ -129,28 +132,17 @@ void app_2d_main_thread (void *argument)
     
     fflush(&__stdout);
 
-    uint64_t dwInstructions = perfc_pmu_get_instruction_count();
-    uint32_t dwInsCalib = perfc_pmu_get_instruction_count() - dwInstructions;
-    int64_t lCycles = 0;
-    
-    dwInstructions = perfc_pmu_get_instruction_count();
-    
-    __cycleof__("Coremark", { lCycles = __cycle_count__; }) {
 #ifdef __PERF_COUNTER_COREMARK__
-    coremark_main();
-#endif
-    }
-    dwInstructions = perfc_pmu_get_instruction_count() - dwInstructions - dwInsCalib;
-    
-    printf( "\r\n"
-            "No. Instructions: %lld\r\n"
-            "Cycle Used: %lld\r\n"
-            "Cycles per Instructions: %3.3f \r\n", 
+    __cpu_perf__("Coremark") {
 
-            dwInstructions,
-            lCycles,
-            (double)lCycles / (double)dwInstructions);
-    
+        coremark_main();
+
+    }
+#else
+    __cpu_perf__("DSP Kernal") {
+        test_entry();
+    }
+#endif
 
     while(1) {
         osDelay(1000ul);
@@ -161,14 +153,18 @@ void app_2d_main_thread (void *argument)
     //osThreadExit();
 }
 
-#include "arm_2d_helper_lcd_console.h"
+#if defined(RTE_CMSIS_Compiler_STDOUT_LCD_Console)
+#   include "arm_2d_helper_lcd_console.h"
+#endif
 
 int main(void)
 {
 
     /* Initialize CMSIS-RTOS2 */
     osKernelInitialize ();
+#if defined(RTE_CMSIS_Compiler_STDOUT_LCD_Console)
     arm_2d_lcd_console_init();
+#endif
 
     static uint64_t thread1_stk_1[APP_STACK_SIZE / sizeof(uint64_t)];
      

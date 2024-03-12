@@ -152,8 +152,9 @@ char stdin_getchar(void)
     return (char)(CMSDK_UART0->DATA);
 }
 
-
-int stdout_putchar(char txchar)
+#if !defined(RTE_CMSIS_Compiler_STDOUT_LCD_Console)                             \
+ && defined(RTE_CMSIS_Compiler_STDOUT_Custom)
+int stdout_putchar(int txchar)
 {
     if (txchar == 10) stdout_putchar((char) 13);
 
@@ -162,6 +163,10 @@ int stdout_putchar(char txchar)
 
     return (int) txchar;
 }
+#else
+extern
+int stdout_putchar(int txchar);
+#endif
 
 
 int _write (int fd, char *ptr, int len)

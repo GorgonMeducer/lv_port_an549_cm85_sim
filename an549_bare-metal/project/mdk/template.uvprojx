@@ -395,6 +395,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\app_cfg.h</FilePath>
             </File>
+            <File>
+              <FileName>test_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\test_main.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -419,16 +424,6 @@
               <FileName>GLCD_Fonts.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\common\platform\GLCD_Fonts.c</FilePath>
-            </File>
-            <File>
-              <FileName>arm_2d_scene_console.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\arm_2d_scene_console.c</FilePath>
-            </File>
-            <File>
-              <FileName>arm_2d_scene_console.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\arm_2d_scene_console.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -988,6 +983,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\app_cfg.h</FilePath>
             </File>
+            <File>
+              <FileName>test_main.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\test_main.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1013,67 +1013,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\common\platform\GLCD_Fonts.c</FilePath>
             </File>
-            <File>
-              <FileName>arm_2d_scene_console.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\arm_2d_scene_console.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>arm_2d_scene_console.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\arm_2d_scene_console.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1093,57 +1032,6 @@
               <FileName>stdout_USART.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\common\platform\mps3\stdout_USART.c</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>GLCD_Config.h</FileName>
@@ -1333,7 +1221,7 @@
           <targetInfo name="V2M-MPS3-AN555"/>
         </targetInfos>
       </component>
-      <component Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="LCD Console" Cvendor="ARM" Cversion="1.0.0" condition="STDOUT LCD Console">
+      <component Cclass="CMSIS-Compiler" Cgroup="STDOUT" Csub="LCD Console" Cvendor="ARM" Cversion="1.0.1" condition="STDOUT LCD Console">
         <package name="Arm-2D" schemaVersion="1.7.28" url="https://www.keil.com/pack/" vendor="ARM" version="9.9.99"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-AN549"/>
@@ -1370,13 +1258,6 @@
       </component>
       <component Cclass="Device" Cgroup="Startup" Cvariant="C Startup" Cvendor="ARM" Cversion="2.2.0" condition="ARMCM85 CMSIS">
         <package name="Cortex_DFP" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="ARM" version="1.0.0"/>
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-AN549"/>
-          <targetInfo name="V2M-MPS3-AN555"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Utilities" Cgroup="perf_counter" Csub="Benchmark" Cvariant="Coremark" Cvendor="GorgonMeducer" Cversion="1.1.3" condition="perf_counter">
-        <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="9.9.9"/>
         <targetInfos>
           <targetInfo name="V2M-MPS3-AN549"/>
           <targetInfo name="V2M-MPS3-AN555"/>
@@ -1930,22 +1811,16 @@
         <targetInfos/>
       </file>
       <file attr="config" category="sourceC" name="benchmark\coremark_port\core_portme.c" version="1.1.2">
-        <instance index="0">RTE\Utilities\core_portme.c</instance>
+        <instance index="0" removed="1">RTE\Utilities\core_portme.c</instance>
         <component Cclass="Utilities" Cgroup="perf_counter" Csub="Benchmark" Cvariant="Coremark" Cvendor="GorgonMeducer" Cversion="1.1.3" condition="perf_counter"/>
         <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="9.9.9"/>
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-AN549"/>
-          <targetInfo name="V2M-MPS3-AN555"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
       <file attr="config" category="header" name="benchmark\coremark_port\core_portme.h" version="1.1.2">
-        <instance index="0">RTE\Utilities\core_portme.h</instance>
+        <instance index="0" removed="1">RTE\Utilities\core_portme.h</instance>
         <component Cclass="Utilities" Cgroup="perf_counter" Csub="Benchmark" Cvariant="Coremark" Cvendor="GorgonMeducer" Cversion="1.1.3" condition="perf_counter"/>
         <package name="perf_counter" schemaVersion="1.7.28" url="https://raw.githubusercontent.com/GorgonMeducer/perf_counter/CMSIS-Pack/cmsis-pack/" vendor="GorgonMeducer" version="9.9.9"/>
-        <targetInfos>
-          <targetInfo name="V2M-MPS3-AN549"/>
-          <targetInfo name="V2M-MPS3-AN555"/>
-        </targetInfos>
+        <targetInfos/>
       </file>
     </files>
   </RTE>

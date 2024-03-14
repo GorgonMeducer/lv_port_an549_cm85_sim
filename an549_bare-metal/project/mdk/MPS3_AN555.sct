@@ -63,12 +63,13 @@ LR_CODE_SRAM __ROM_SRAM_BASE __ROM_SRAM_SIZE {
         *.o (RESET, +First)
         * (InRoot$$Sections)
         ;   *(Veneer$$CMSE)                                                     ; uncomment for secure applications
-        * (+RO)
+        * (+RO-CODE)
         ;   * (+XO)
     }
 
     RW_RAM1 __RAM1_BASE __RAM1_RW_SIZE {
         .ANY (+RW +ZI)
+        .ANY (+RO-DATA)
     }
 
     ARM_LIB_STACK +0 ALIGN 8 EMPTY __STACK_SIZE {                      ; Reserve empty region for stack

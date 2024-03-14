@@ -100,7 +100,7 @@ LR_ROM __RO_BASE __RO_SIZE  {                       ; load region size_region
   }
 
   RW_RAM __RW_BASE __RW_SIZE  {                     ; RW data
-   .ANY (+RW +ZI)
+   .ANY (+RW +ZI +RO-DATA)
   }
 
 #if __HEAP_SIZE > 0

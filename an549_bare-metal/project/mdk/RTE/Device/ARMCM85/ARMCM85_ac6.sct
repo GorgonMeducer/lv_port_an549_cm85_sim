@@ -95,12 +95,13 @@ LR_ROM __RO_BASE __RO_SIZE  {                       ; load region size_region
   ER_ROM __RO_BASE __RO_SIZE  {                     ; load address = execution address
    *.o (RESET, +First)
    *(InRoot$$Sections)
-   .ANY (+RO)
+   .ANY (+RO-CODE)
    .ANY (+XO)
   }
 
   RW_RAM __RW_BASE __RW_SIZE  {                     ; RW data
    .ANY (+RW +ZI)
+   .ANY (+RO-DATA)
   }
 
 #if __HEAP_SIZE > 0
